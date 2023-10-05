@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import App from './app';
 
@@ -8,8 +8,8 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getByText } = render(<App />);
-    expect(getByText(/Welcome birder-ui/gi)).toBeTruthy();
+  it('should have a file input', () => {
+    render(<App />);
+    expect(screen.getByLabelText(/bird image/i)).toBeTruthy();
   });
 });

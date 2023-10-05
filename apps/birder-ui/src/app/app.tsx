@@ -1,12 +1,24 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-
-import NxWelcome from './nx-welcome';
-
 export function App() {
   return (
     <div>
-      <NxWelcome title="birder-ui" />
+      <form
+        title="Select bird image"
+        encType="multipart/form-data"
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          const { currentTarget: form } = e;
+
+          fetch('http://localhost:7071/api/upload-image', {
+            method: 'POST',
+            body: new FormData(form),
+          });
+        }}
+      >
+        <label htmlFor="image">Bird Image</label>
+        <input type="file" name="image" id="image" />
+        <button type="submit">Upload</button>
+      </form>
     </div>
   );
 }
