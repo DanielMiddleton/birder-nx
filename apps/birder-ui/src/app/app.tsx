@@ -2,6 +2,7 @@ export function App() {
   return (
     <div>
       <form
+        title="Select bird image"
         encType="multipart/form-data"
         onSubmit={(e) => {
           e.preventDefault();
@@ -15,7 +16,7 @@ export function App() {
         }}
       >
         <label htmlFor="image">Bird Image</label>
-        <input type="file" name="image" />
+        <input type="file" name="image" id="image" />
         <button type="submit">Upload</button>
       </form>
     </div>
